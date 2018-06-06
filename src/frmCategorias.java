@@ -105,7 +105,7 @@ public class frmCategorias extends javax.swing.JFrame {
         String nombre =jtextNombre.getText();
         boolean conec=false;
         try{
-            conec= cn.ejecutainsert("INSERT INTO categoria (nombre,descripcion) VALUES ('"+nombre+"','"+descripcion+"')");
+            conec= cn.ejecutainsert("INSERT INTO categorias (nombre,descripcion) VALUES ('"+nombre+"','"+descripcion+"')");
                               
                 
         }catch(Exception e){
@@ -115,7 +115,7 @@ public class frmCategorias extends javax.swing.JFrame {
          if (conec){
                 JOptionPane.showMessageDialog( null,"exitoso");
             }  else{
-                JOptionPane.showMessageDialog( null,"null");
+                JOptionPane.showMessageDialog( null,"error");
          }    
         
     }//GEN-LAST:event_jbtnEnviarActionPerformed
