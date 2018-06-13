@@ -30,6 +30,7 @@ public class Conexion {
         }
     return cnx;
     }
+    
     public boolean ejecutainsert(String sql)throws ClassNotFoundException {
      
         try{

@@ -22,6 +22,8 @@ public class frmCategorias extends javax.swing.JFrame {
      */
     public frmCategorias() {
         initComponents();
+        this.crear();
+        
     }
 
     /**
@@ -41,6 +43,8 @@ public class frmCategorias extends javax.swing.JFrame {
         jbtnEnviar = new javax.swing.JButton();
         BtnSelect = new javax.swing.JButton();
         text = new javax.swing.JLabel();
+        cmbcat = new javax.swing.JComboBox<>();
+        btncatload = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,22 +68,41 @@ public class frmCategorias extends javax.swing.JFrame {
 
         text.setText("mostrar");
 
+        cmbcat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbcat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbcatActionPerformed(evt);
+            }
+        });
+
+        btncatload.setText("cargar combo");
+        btncatload.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncatloadActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(lblDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jtextNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
-                    .addComponent(jtextDescrip))
-                .addGap(87, 87, 87))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(cmbcat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(btncatload)
+                .addGap(31, 31, 31))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(79, 79, 79)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(lblDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(76, 76, 76)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jtextNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtextDescrip, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(159, 159, 159)
                         .addComponent(jbtnEnviar)
@@ -88,7 +111,7 @@ public class frmCategorias extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addComponent(text, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(30, 196, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,17 +120,21 @@ public class frmCategorias extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtextNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblNombre))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtextDescrip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDescripcion))
-                .addGap(22, 22, 22)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblDescripcion)
+                    .addComponent(jtextDescrip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbtnEnviar)
                     .addComponent(BtnSelect))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(text, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbcat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btncatload))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -173,6 +200,54 @@ public class frmCategorias extends javax.swing.JFrame {
         
     }//GEN-LAST:event_BtnSelectActionPerformed
 
+    private void btncatloadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncatloadActionPerformed
+        // TODO add your handling code here:
+       List <String> nombre=new ArrayList();
+       Conexion cn=new Conexion();
+       
+        try {
+            // TODO add your handling code here:
+            
+            cn.select("Select nombre from categorias");
+            nombre.addAll(cn.select("Select nombre from categorias"));
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(frmCategorias.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+        //listar combobox automatico//
+        String vector[]= new String [nombre.size()];
+        vector=nombre.toArray(vector);//copiar lista a array igual a vecto//
+        cmbcat.setModel(new javax.swing.DefaultComboBoxModel<>(vector ) );//metodo para listar items vector//
+        
+    }//GEN-LAST:event_btncatloadActionPerformed
+
+    private void cmbcatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbcatActionPerformed
+        // TODO add your handling code here:
+        
+       btncatload.setText(cmbcat.getSelectedItem().toString());//escuchar opcion//
+        
+    }//GEN-LAST:event_cmbcatActionPerformed
+    public void crear (){
+     // TODO add your handling code here:
+       List <String> nombre=new ArrayList();
+       Conexion cn=new Conexion();
+       
+        try {
+            // TODO add your handling code here:
+            
+            cn.select("Select nombre from categorias");
+            nombre.addAll(cn.select("Select nombre from categorias"));
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(frmCategorias.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+        //listar combobox automatico//
+        String vector[]= new String [nombre.size()];
+        vector=nombre.toArray(vector);//copiar lista a array igual a vecto//
+        cmbcat.setModel(new javax.swing.DefaultComboBoxModel<>(vector ) );//metodo para listar items vector//
+    }
     /**
      * @param args the command line arguments
      */
@@ -210,6 +285,8 @@ public class frmCategorias extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnSelect;
+    private javax.swing.JButton btncatload;
+    private javax.swing.JComboBox<String> cmbcat;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton jbtnEnviar;
     private javax.swing.JTextField jtextDescrip;
